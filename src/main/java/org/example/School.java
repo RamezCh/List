@@ -1,48 +1,31 @@
 package org.example;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class School {
-    private List<Student> students = new ArrayList<Student>();
+    private Map<String, Student> students = new HashMap<String, Student>();
 
-    public School(List<Student> students) {
+    public School(Map<String, Student> students) {
         this.students = students;
     }
 
     public void addStudent(Student student) {
-        students.add(student);
+        students.put(student.getID(), student);
     }
 
     public Student getStudentById(String ID) {
-        for(int i = 0; i < students.size(); i++) {
-            if(ID == students.get(i).getID()) {
-                return students.get(i);
-            }
-        }
-        return new Student("404", "Not Found", "Not Found");
+        return students.get(ID);
     }
 
     public void removeStudentById(String ID) {
-        for(int i = 0; i < students.size(); i++) {
-            if(ID == students.get(i).getID()) {
-                students.remove(i);
-                return;
-            }
-        }
-    }
-
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
+        students.remove(ID);
     }
 
     public void displayStudents() {
         System.out.println("---- School students ----");
-        for(Student student : students) {
+        for (Student student : students.values()) {
             System.out.println(student.getFirstName() + " " + student.getLastName());
         }
     }
