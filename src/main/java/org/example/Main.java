@@ -10,7 +10,9 @@ public class Main {
         Medication paracetamol = new Medication("paracetamol", 4, true);
         Medication ibuprufen = new Medication("Ibuprufen", 5, true);
         Medication strepsils = new Medication("strepsils", 3, false);
+
         Pharmacy pharmacy = new Pharmacy();
+
         System.out.println(pharmacy);
         System.out.println(pharmacy.getCount());
         pharmacy.addMedication(paracetamol);
